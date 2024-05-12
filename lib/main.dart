@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     int days = 30;
     return MaterialApp(
       themeMode: ThemeMode.light, // Change themeMode to dark for a dark theme.
-      theme: ThemeData(primarySwatch: Colors.green), // Light theme
+      theme: ThemeData(primarySwatch: Colors.deepPurple), // Light theme
       darkTheme: ThemeData(
         primarySwatch: Colors.green, // Dark theme
         brightness: Brightness.dark,

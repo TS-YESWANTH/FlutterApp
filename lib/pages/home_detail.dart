@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/modals/catalog.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -15,9 +13,9 @@ class HomeDetailPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -26,8 +24,8 @@ class HomeDetailPage extends StatelessWidget {
             ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(MyTheme.darkBluishColor),
+                        backgroundColor: MaterialStateProperty.all(
+                            Theme.of(context).primaryColor),
                         shape:
                             MaterialStateProperty.all(const StadiumBorder())),
                     child: "Add to Cart".text.color(Colors.white).make())
@@ -49,21 +47,23 @@ class HomeDetailPage extends StatelessWidget {
                 arcType: VxArcType.convey,
                 edge: VxEdge.top,
                 child: Container(
-                  color: Colors.white,
+                  color: context.cardColor,
                   width: context.screenWidth,
                   child: Column(
                     children: [
                       catalog.name.text.xl4
-                          .color(MyTheme.darkBluishColor)
+                          .color(context.theme.colorScheme.secondary)
                           .bold
                           .make(),
                       catalog.desc.text.xl
+                          .color(context.theme.colorScheme.secondary)
                           .textStyle(context.captionStyle)
                           .make(),
                       20.heightBox,
                       "Labore aute cupidatat excepteur anim magna. Sit ipsum dolor ea minim enim do Lorem sint labore minim dolore. Tempor duis elit duis velit deserunt consequat nulla aliqua voluptate mollit laborum quis do. Minim velit culpa nulla sit nostrud."
                           .text
                           .center
+                          .color(context.theme.colorScheme.secondary)
                           .textStyle(context.captionStyle)
                           .make()
                           .p16()

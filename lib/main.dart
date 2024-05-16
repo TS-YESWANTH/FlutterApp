@@ -6,7 +6,7 @@ import 'package:flutter_application_1/utils/routes.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,16 +15,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.light, // Change themeMode to dark for a dark theme.
+      themeMode: ThemeMode.system, // Change themeMode to dark for a dark theme.
       theme: MyTheme.lightTheme(context), // Light theme
       darkTheme: MyTheme.darkTheme(context),
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.homeRoute,
+      initialRoute: MyRoutes.loginRoute,
       routes: {
         "/": (context) => LoginPage(),
         MyRoutes.homeRoute: (context) => const HomePage(),
         MyRoutes.loginRoute: (context) => LoginPage(),
-        MyRoutes.CartRoute:(context) => const CartPage()
+        MyRoutes.CartRoute: (context) => const CartPage()
       },
     );
   }

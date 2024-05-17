@@ -40,12 +40,16 @@ class _CartTotal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$${cart.totalPrice}".text.xl5.color(context.theme.colorScheme.secondary).make(),
+          "\$${cart.totalPrice}"
+              .text
+              .xl5
+              .color(context.theme.colorScheme.secondary)
+              .make(),
           30.widthBox,
           ElevatedButton(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: "Buying not yet supported".text.make()));
+                        content: "Buying not yet supported".text.make()));
                   },
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
@@ -70,16 +74,21 @@ class __CartListState extends State<_CartList> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: _cart.items.length,
-      itemBuilder: (context, index) => ListTile(
-        leading: const Icon(Icons.done),
-        trailing: IconButton(
-          icon: const Icon(Icons.remove_circle_outline),
-          onPressed: () {},
-        ),
-        title: _cart.items[index]?.name.text.make(),
-      ),
-    );
+    return _cart.items.isEmpty
+        ? "Your Cart is empty".text.xl3.makeCentered()
+        : ListView.builder(
+            itemCount: _cart.items.length,
+            itemBuilder: (context, index) => ListTile(
+              leading: const Icon(Icons.done),
+              trailing: IconButton(
+                icon: const Icon(Icons.remove_circle_outline),
+                onPressed: () {
+                  _cart.remove(_cart.items[index]!);
+                  setState(() {});
+                },
+              ),
+              title: _cart.items[index]?.name.text.make(),
+            ),
+          );
   }
 }

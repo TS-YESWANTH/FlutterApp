@@ -52,6 +52,7 @@ class _HomePageState extends State<HomePage> {
         throw Exception('Failed to load data');
       }
     } catch (e) {
+      // ignore: avoid_print
       print("Error: $e");
       // You can show a dialog or some UI to indicate an error
     }
@@ -59,13 +60,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final _cart = (VxState.store as MyStore).cart;
+    final cart = (VxState.store as MyStore).cart;
     return Scaffold(
       backgroundColor: context.canvasColor,
       floatingActionButton: VxBuilder<MyStore>(
         mutations: const {AddMutation, RemoveMutation},
         builder: (context, store, _) => FloatingActionButton(
-          onPressed: () => Navigator.pushNamed(context, MyRoutes.CartRoute),
+          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
           backgroundColor: Theme.of(context).primaryColor,
           child: const Icon(
             CupertinoIcons.cart,
@@ -74,7 +75,7 @@ class _HomePageState extends State<HomePage> {
         ).badge(
             color: Vx.gray200,
             size: 22,
-            count: _cart.items.length,
+            count: cart.items.length,
             textStyle: const TextStyle(
                 color: Colors.black, fontWeight: FontWeight.bold)),
       ),

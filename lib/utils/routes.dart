@@ -2,5 +2,5 @@ class MyRoutes {
   static String homeRoute="/home";
   static String loginRoute="/login";
   static String homeDetailRoute="/detail";
-  static String CartRoute="/cart";
+  static String cartRoute="/cart";
 }
